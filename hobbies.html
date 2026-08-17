@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hobbies | Laurence Pangilinan</title>
+    <style>
+        /* --- GLOBAL & STICKY NAV --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #000;
+            line-height: 1.6;
+        }
+
+        header {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            z-index: 2000;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 25px 5%;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #000;
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+            padding-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1.5px;
+            bottom: 0;
+            left: 0;
+            background-color: #000;
+            transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .nav-links a:hover::after { width: 100%; }
+
+        .logo-text {
+            font-size: 22px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        /* --- HOBBIES GRID SECTION --- */
+        .hobbies-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 5%;
+        }
+
+        .hobbies-title {
+            text-align: center;
+            font-size: 42px;
+            font-weight: 400;
+            margin-bottom: 60px;
+            letter-spacing: -1px;
+        }
+
+        .hobbies-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 80px 40px; /* Increased vertical gap to match reference spacing */
+        }
+
+        .hobby-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hobby-image {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            background-color: #f2f2f2;
+            overflow: hidden;
+            margin-bottom: 25px;
+        }
+
+        .hobby-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .hobby-item:hover .hobby-image img {
+            transform: scale(1.05);
+        }
+
+        .hobby-item h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .hobby-item p {
+            font-size: 15px;
+            color: #333;
+            max-width: 85%;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        /* --- BUTTON STYLE --- */
+        .btn-learn {
+            display: inline-block;
+            padding: 12px 45px;
+            background-color: #fff;
+            border: 1px solid #000;
+            color: #000;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 50px; /* Rounded pill style like the reference */
+            text-transform: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-learn:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+        /* --- ANIMATION --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .hobbies-grid { grid-template-columns: 1fr; }
+            header { flex-direction: column; gap: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="nav-links">
+            <a href="index.html">Hello</a>
+            <a href="work.html">Work</a>
+            <a href="about.html">About</a>
+            <a href="hobbies.html">Hobbies</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <div class="logo-text">LAURENCE PANGILINAN</div>
+    </header>
+
+    <main class="hobbies-wrapper">
+        <h1 class="hobbies-title reveal">My Hobbies</h1>
+
+        <div class="hobbies-grid">
+            
+            <div class="hobby-item reveal">
+                <div class="hobby-image">
+                    <img src="brewing.jpg" alt="Alternative Brewing">
+                </div>
+                <h3>Alternative Brewing</h3>
+                <p>Exploring the art of manual brewing through the Aeropress, V60 pour-overs, and the delicate ritual of Matcha.</p>
+                <a href="alternative-brewing.html" class="btn-learn">Learn More</a>
+            </div>
+
+            <div class="hobby-item reveal">
+                <div class="hobby-image">
+                    <img src="wallpapers.png" alt="Digital Creation">
+                </div>
+                <h3>Digital Product Creation</h3>
+                <p>Crafting digital stories and designing custom wallpapers that blend minimalism with functional aesthetics.</p>
+                <a href="digital-product-creation.html" class="btn-learn">Learn More</a>
+            </div>
+
+            <div class="hobby-item reveal">
+                <div class="hobby-image">
+                    <img src="ui-ux.png" alt="UI/UX Design">
+                </div>
+                <h3>UI & UX Design</h3>
+                <p>Focusing on user-centric design principles to create intuitive, clean, and engaging digital interfaces.</p>
+                <a href="ui-ux-design.html" class="btn-learn">Learn More</a>
+            </div>
+
+            <div class="hobby-item reveal">
+                <div class="hobby-image">
+                    <img src="tech.png" alt="Tech Peripherals">
+                </div>
+                <h3>Home Office Design</h3>
+                <p>Curating minimal desk setups and mechanical peripherals that enhance the creative workflow.</p>
+                <a href="home-office-design.html" class="btn-learn">Learn More</a>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    </script>
+
+</body>
+</html>

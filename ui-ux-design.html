@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI UX Design | Laurence Pangilinan</title>
+    <style>
+        /* --- GLOBAL STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        html {
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #000;
+            line-height: 1.6;
+        }
+
+        /* --- STICKY NAVIGATION --- */
+        header.site-nav {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            z-index: 2000;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 25px 5%;
+        }
+
+        .nav-links { display: flex; gap: 25px; }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #000;
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+            padding-bottom: 5px;
+            font-weight: 500;
+        }
+
+        /* Hover Line Effect */
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1.5px;
+            bottom: 0;
+            left: 0;
+            background-color: #000;
+            transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .nav-links a:hover::after { width: 100%; }
+
+        .logo-text { 
+            font-size: 22px; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            letter-spacing: 3px; 
+        }
+
+        /* --- LOAD EFFECT: REVEAL --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            filter: blur(10px);
+            transition: opacity 1.2s cubic-bezier(0.165, 0.84, 0.44, 1),
+                        transform 1.2s cubic-bezier(0.165, 0.84, 0.44, 1),
+                        filter 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+            filter: blur(0px);
+        }
+
+        /* --- EDITORIAL CONTENT --- */
+        .detail-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 100px 5%;
+        }
+
+        .page-header { 
+            margin-bottom: 60px;
+        }
+
+        .category-tag {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #999;
+            margin-bottom: 10px;
+            display: block;
+            font-weight: 400;
+        }
+
+        .main-title {
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            max-width: 900px;
+            color: #000;
+        }
+
+        .hero-image {
+            width: 100%;
+            margin-bottom: 80px;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .narrative-text {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 100px;
+            max-width: 850px;
+            line-height: 1.8;
+        }
+
+        /* --- DETAILS SECTION --- */
+        .goals-section {
+            display: flex;
+            gap: 80px;
+            padding-top: 80px;
+            border-top: 1px solid #eee;
+            align-items: flex-start;
+        }
+
+        .goals-visual { flex: 1.3; }
+        .goals-visual img { width: 100%; height: auto; display: block; }
+
+        .goals-content { flex: 1; }
+        .goals-content h3 {
+            font-size: 32px;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+
+        .goal-item {
+            margin-bottom: 30px;
+            list-style: none;
+        }
+
+        .goal-item strong {
+            display: block;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+            color: #000;
+        }
+
+        .goal-item span { color: #666; font-size: 16px; }
+
+        .back-nav {
+            margin-top: 120px;
+            text-align: left;
+        }
+
+        .back-link {
+            text-decoration: none;
+            color: #000;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            border-bottom: 2px solid #000;
+            padding-bottom: 5px;
+        }
+
+        @media (max-width: 900px) {
+            .goals-section { flex-direction: column; }
+            .main-title { font-size: 38px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-nav">
+        <nav class="nav-links">
+            <a href="index.html">Hello</a>
+            <a href="work.html">Work</a>
+            <a href="about.html">About</a>
+            <a href="hobbies.html">Hobbies</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <div class="logo-text">LAURENCE PANGILINAN</div>
+    </header>
+
+    <main class="detail-container">
+        <header class="page-header reveal">
+            <span class="category-tag">Process & Empathy</span>
+            <h1 class="main-title">UI/UX Design: Bridging the Gap Between Function and Human Experience.</h1>
+        </header>
+
+        <section class="hero-image reveal">
+            <img src="prototype.png" alt="UX Case Study Visual">
+        </section>
+
+        <article class="narrative-text reveal">
+            <p>Design is not just about how it looks, but how it works and feels for the user. My approach to UI/UX is deeply rooted in problem-solving—identifying pain points and creating seamless, intuitive interfaces that enhance daily interactions through minimalism and intentionality.</p>
+        </article>
+
+        <section class="goals-section reveal">
+            <div class="goals-visual">
+                <img src="design.png" alt="Design System Breakdown">
+            </div>
+            
+            <div class="goals-content">
+                <h3>Design Philosophy</h3>
+                <ul>
+                    <li class="goal-item">
+                        <strong>User-Centricity</strong>
+                        <span>Putting the person behind the screen first to ensure every feature serves a meaningful purpose.</span>
+                    </li>
+                    <li class="goal-item">
+                        <strong>Visual Clarity</strong>
+                        <span>Creating clean, modern interfaces that reduce cognitive load and guide users through a smooth digital journey.</span>
+                    </li>
+                    <li class="goal-item">
+                        <strong>Iterative Craft</strong>
+                        <span>Refining interactions through constant testing and feedback to achieve the highest level of functional aesthetics.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="back-nav reveal">
+            <a href="hobbies.html" class="back-link">← Back to Hobbies</a>
+        </div>
+    </main>
+
+    <script>
+        window.addEventListener('load', () => {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach((el, index) => {
+                setTimeout(() => {
+                    el.classList.add('active');
+                }, index * 200); 
+            });
+        });
+    </script>
+
+</body>
+</html>

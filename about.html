@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Laurence Pangilinan</title>
+    <style>
+        /* --- GLOBAL STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #000;
+            line-height: 1.6;
+        }
+
+        /* --- STICKY NAVBAR --- */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 25px 5%;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #000;
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+            padding-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1.5px;
+            bottom: 0;
+            left: 0;
+            background-color: #000;
+            transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .nav-links a:hover::after { width: 100%; }
+
+        .logo-text {
+            font-size: 22px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        /* --- ABOUT CONTENT --- */
+        .about-wrapper {
+            display: flex;
+            min-height: calc(100vh - 82px);
+            padding: 100px 10%; /* Increased horizontal padding to center content */
+            gap: 120px; /* Increased gap to match the airy feel of the reference */
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        .about-image {
+            flex: 1;
+            position: sticky;
+            top: 140px;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        .about-text {
+            flex: 1;
+            max-width: 480px; /* Smaller max-width makes the text feel more centered and refined */
+        }
+
+        .about-text span {
+            font-size: 12px; /* Smaller eyebrow text */
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #888;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .about-text h1 {
+            font-size: 38px; /* Slightly smaller header for better balance */
+            font-weight: 500;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            letter-spacing: -1px;
+        }
+
+        .about-text p {
+            font-size: 15px; /* Reduced font size for an editorial look */
+            color: #333;
+            margin-bottom: 22px;
+            line-height: 1.7;
+        }
+
+        .family-highlight {
+            font-weight: 500;
+            color: #000;
+        }
+
+        /* --- ANIMATION --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 1024px) {
+            .about-wrapper { 
+                flex-direction: column; 
+                gap: 50px; 
+                padding: 60px 5%; 
+                align-items: center;
+            }
+            .about-image { position: relative; top: 0; width: 100%; max-width: 600px; }
+            .about-text { max-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="nav-links">
+            <a href="index.html">Hello</a>
+            <a href="work.html">Work</a>
+            <a href="about.html">About</a>
+            <a href="hobbies.html">Hobbies</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <div class="logo-text">LAURENCE PANGILINAN</div>
+    </header>
+
+    <main class="about-wrapper">
+        <div class="about-image reveal" id="aboutImg">
+            <img src="about-profile.png" alt="Laurence Pangilinan Profile">
+        </div>
+
+        <div class="about-text reveal" id="aboutTxt">
+            <span>The Person Behind the Design</span>
+            <h1>I’m Laurence, a creative exploring the intersection of design, content, and coffee.</h1>
+            
+            <p>Based on my journey through UI/UX and digital creation, I've developed a passion for crafting experiences that are as functional as they are beautiful. Whether I'm designing intuitive interfaces or curating digital aesthetics, my goal is always rooted in human connection and intentionality.</p>
+
+            <p>Beyond the screen, I find balance in the ritual of alternative brewing. Mastering the Aeropress and V60 has taught me that great results—much like great design—require patience, precision, and a constant willingness to experiment.</p>
+
+            <p class="family-highlight">On a personal note, I am the youngest in a family of four. My world is centered around my parents, my brother, and the shared experiences that keep us close. Being the youngest has shaped my perspective, allowing me to observe, learn, and grow through the stories of those around me.</p>
+
+            <p>When I’m not at my desk or my brew station, you can find me exploring new tech peripherals or refining my space to better support my creative workflow. I believe that our environments and our habits define the quality of our work.</p>
+        </div>
+    </main>
+
+    <script>
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('aboutImg').classList.add('active');
+                document.getElementById('aboutTxt').classList.add('active');
+            }, 200);
+        });
+    </script>
+
+</body>
+</html>

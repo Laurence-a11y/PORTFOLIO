@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laurence Pangilinan | Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* --- GLOBAL STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        /* CHANGED: Moved overflow-x to html to allow sticky header to work */
+        html {
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #000;
+            line-height: 1.6;
+            /* REMOVED: overflow-x: hidden from here */
+        }
+
+        /* --- STICKY NAVBAR --- */
+        header {
+            position: -webkit-sticky; /* ADDED: Safari support */
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 25px 5%;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #000;
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+            padding-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1.5px;
+            bottom: 0;
+            left: 0;
+            background-color: #000;
+            transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .logo-text {
+            font-size: 22px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        /* --- CONTENT CONTAINER --- */
+        .content-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .section-row {
+            display: flex;
+            align-items: center;
+            gap: 80px;
+            min-height: 75vh;
+            padding: 80px 0;
+        }
+
+        .section-row.reverse {
+            flex-direction: row-reverse;
+        }
+
+        /* --- CINEMATIC REVEAL --- */
+        .reveal {
+            opacity: 0;
+            transform: scale(0.9);
+            filter: blur(6px);
+            transition: opacity 1.3s cubic-bezier(0.165, 0.84, 0.44, 1),
+                transform 1.3s cubic-bezier(0.165, 0.84, 0.44, 1),
+                filter 1.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: scale(1);
+            filter: blur(0px);
+        }
+
+        .image-container {
+            flex: 1.2;
+            background-color: #f2f2f2;
+            aspect-ratio: 4 / 5;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            clip-path: inset(10% 10% 10% 10%);
+            transition: clip-path 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .reveal.active .image-container {
+            clip-path: inset(0% 0% 0% 0%);
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .text-container {
+            flex: 1;
+        }
+
+        .text-container h1,
+        .text-container h2 {
+            font-size: 34px;
+            margin-bottom: 25px;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        .text-container p {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 35px;
+            line-height: 1.8;
+        }
+
+        /* --- BUTTONS --- */
+        .btn-black {
+            display: inline-block;
+            background-color: #000;
+            color: #fff;
+            padding: 16px 36px;
+            text-decoration: none;
+            font-size: 13px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: background-color 0.5s ease, transform 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-black:hover {
+            background-color: #777;
+            transform: translateY(-2px);
+        }
+
+        /* --- CTA SECTION --- */
+        .cta-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 100px 0;
+            width: 100%;
+        }
+
+        .cta-left {
+            flex: 1;
+        }
+
+        .cta-left h3 {
+            font-size: 34px;
+            font-weight: 600;
+            line-height: 1.2;
+            max-width: 400px;
+        }
+
+        .cta-right {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .btn-wide {
+            width: 320px;
+            text-align: center;
+        }
+
+        /* --- FOOTER & SOCIALS --- */
+        .scroll-tag {
+            text-align: center;
+            font-size: 12px;
+            letter-spacing: 6px;
+            padding: 40px 0;
+            text-transform: uppercase;
+        }
+
+        .divider {
+            border: none;
+            border-top: 1px solid #eee;
+            margin: 20px 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 60px 0 100px 0;
+        }
+
+        footer h4 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-text {
+            font-size: 15px;
+            color: #555;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            line-height: 1.6;
+        }
+
+        .social-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            text-decoration: none;
+            color: #000;
+            font-size: 22px;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-icon:hover {
+            opacity: 0.5;
+            transform: translateY(-3px);
+        }
+
+        /* MOBILE RESPONSIVE */
+        @media (max-width: 900px) {
+            .section-row,
+            .section-row.reverse,
+            .cta-section {
+                flex-direction: column;
+                text-align: center;
+                gap: 50px;
+            }
+
+            .cta-left h3 {
+                max-width: 100%;
+                margin-bottom: 25px;
+            }
+
+            .cta-right {
+                width: 100%;
+                align-items: center;
+            }
+
+            header {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="nav-links">
+            <a href="index.html">Hello</a>
+            <a href="work.html">Work</a>
+            <a href="about.html">About</a>
+            <a href="hobbies.html">Hobbies</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <div class="logo-text">LAURENCE PANGILINAN</div>
+    </header>
+
+    <div class="content-wrapper">
+
+        <section class="section-row reveal" id="hero">
+            <div class="image-container">
+                <img src="hello1.png" alt="Laurence Pangilinan">
+            </div>
+            <div class="text-container">
+                <h1>Hello, I'm Laurence Pangilinan.<br>A UI/UX designer, digital creator, and barista.</h1>
+                <p>I create digital experiences, craft digital products, and brew coffee with intention. What
+                    began as curiosity became a passion for the intersection of design, creativity, and human
+                    connection. Scroll down to get to know me.</p>
+            </div>
+        </section>
+
+        <div class="scroll-tag">SCROLL<br>⌵</div>
+
+        <section class="section-row reverse reveal">
+            <div class="image-container">
+                <img src="hello2.png" alt="Content Creation">
+            </div>
+            <div class="text-container">
+                <h2>Before stepping into design, I explored creativity through digital products.</h2>
+                <p>I created and shared visual work such as wallpapers, experimenting with composition, color, and style across digital platforms.
+                Creating digital products taught me how people interact with visuals, what captures attention, and how design choices shape perception—skills that now influence how I design.</p>
+                <a href="contact.html" class="btn-black">See my Socials</a>
+            </div>
+        </section>
+
+        <section class="section-row reveal">
+            <div class="image-container">
+                <img src="hello3.png" alt="Hobbies">
+            </div>
+            <div class="text-container">
+                <h2>I believe great design is rooted in everyday experiences.</h2>
+                <p>As a home barista and home café host, I learned precision, patience, and consistency. Coffee became
+                    more than a drink—it was about people, comfort, and experience. That mindset shapes my design:
+                    thoughtful, user-focused, and intentional.</p>
+                <a href="hobbies.html" class="btn-black">See my Hobbies</a>
+            </div>
+        </section>
+
+        <hr class="divider">
+
+        <section class="cta-section reveal">
+            <div class="cta-left">
+                <h3>What do you want to do now?</h3>
+            </div>
+            <div class="cta-right">
+                <a href="work.html" class="btn-black btn-wide">See my Portfolio</a>
+                <a href="about.html" class="btn-black btn-wide">Read more about me</a>
+                <a href="contact.html" class="btn-black btn-wide">Contact me</a>
+            </div>
+        </section>
+
+        <hr class="divider">
+
+        <footer class="reveal">
+            <h4>Connect With Me</h4>
+            <p class="footer-text">
+                Find me online on most digital platforms <strong>@r3n.c3</strong>.
+                For business inquiries, email me at <strong>pangilinanlaurence100@gmail.com</strong>
+            </p>
+            
+            <div class="social-container">
+                <a href="https://www.facebook.com/R3NC3.3910829/" target="_blank" class="social-icon">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/r3n.c3_/" target="_blank" class="social-icon">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="mailto:pangilinanlaurence100@gmail.com" class="social-icon">
+                    <i class="far fa-envelope"></i>
+                </a>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('hero').classList.add('active');
+            }, 200);
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    </script>
+
+</body>
+
+</html>

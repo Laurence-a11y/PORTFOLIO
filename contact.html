@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Laurence Pangilinan</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* --- GLOBAL STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #000;
+            line-height: 1.6;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- NAVBAR --- */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 25px 5%;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #000;
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+            padding-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1.5px;
+            bottom: 0;
+            left: 0;
+            background-color: #000;
+            transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .logo-text {
+            font-size: 22px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        /* --- CONTACT CONTENT --- */
+        .contact-wrapper {
+            flex: 1;
+            display: flex;
+            align-items: flex-start;
+            padding-top: 12vh;
+            padding-left: 15%;
+        }
+
+        .contact-content {
+            max-width: 550px;
+        }
+
+        .contact-content h1 {
+            font-size: 52px;
+            font-weight: 400;
+            margin-bottom: 25px;
+            letter-spacing: -1px;
+        }
+
+        .contact-content p {
+            font-size: 17px;
+            color: #000;
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+
+        /* --- PERSONAL INFORMATION --- */
+        .personal-info {
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        .personal-info p {
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 2px;
+        }
+
+        /* --- EMAIL LINK --- */
+        .email-link {
+            display: block;
+            text-decoration: none;
+            color: #000;
+            font-size: 15px;
+            border-bottom: 1.5px solid #000;
+            width: fit-content;
+            margin: 30px 0;
+            padding-bottom: 3px;
+            transition: opacity 0.3s ease;
+        }
+
+        .email-link:hover {
+            opacity: 0.5;
+        }
+
+        /* --- SOCIAL BUTTONS --- */
+        .social-container {
+            display: flex;
+            gap: 25px;
+            margin-top: 15px;
+        }
+
+        .social-icon {
+            text-decoration: none;
+            color: #000;
+            font-size: 22px;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-icon:hover {
+            opacity: 0.6;
+            transform: translateY(-2px);
+        }
+
+        /* --- REVEAL ANIMATION --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(15px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- MOBILE --- */
+        @media (max-width: 768px) {
+            .contact-wrapper {
+                padding-left: 10%;
+                padding-top: 15vh;
+                padding-right: 10%;
+            }
+
+            .contact-content h1 {
+                font-size: 40px;
+            }
+
+            .nav-links {
+                gap: 12px;
+            }
+
+            .nav-links a {
+                font-size: 10px;
+                letter-spacing: 1px;
+            }
+
+            .logo-text {
+                font-size: 15px;
+                letter-spacing: 2px;
+            }
+
+            .personal-info p {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <nav class="nav-links">
+            <a href="index.html">Hello</a>
+            <a href="work.html">Work</a>
+            <a href="about.html">About</a>
+            <a href="hobbies.html">Hobbies</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+
+        <div class="logo-text">
+            LAURENCE PANGILINAN
+        </div>
+    </header>
+
+
+    <!-- CONTACT CONTENT -->
+    <main class="contact-wrapper">
+        <div class="contact-content reveal" id="contactContent">
+
+            <h1>Hello</h1>
+
+            <p>Drop me a line for inquiries,</p>
+            <p>collaborations, going out for coffee,</p>
+            <p>or just to say hello.</p>
+
+            <!-- PERSONAL INFORMATION -->
+            <div class="personal-info">
+                <p>Address: San Fernando, Pampanga, Philippines</p>
+                <p>Contact Number: 0945 594 9314</p>
+                <p>Emergency Contact: 0917 676 2634</p>
+                <p>Father's Occupation: BPO Site Manager</p>
+                <p>Mother's Occupation: Housewife</p>
+            </div>
+
+            <!-- EMAIL -->
+            <a href="mailto:pangilinanlaurence100@gmail.com" class="email-link">
+                mail to: pangilinanlaurence100@gmail.com
+            </a>
+
+            <!-- SOCIAL LINKS -->
+            <div class="social-container">
+
+                <a href="https://www.facebook.com/R3NC3.3910829/"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="social-icon">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+
+                <a href="https://www.instagram.com/r3n.c3_/"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="social-icon">
+                    <i class="fab fa-instagram"></i>
+                </a>
+
+                <a href="mailto:pangilinanlaurence100@gmail.com"
+                   class="social-icon">
+                    <i class="far fa-envelope"></i>
+                </a>
+
+            </div>
+
+        </div>
+    </main>
+
+
+    <!-- REVEAL ANIMATION -->
+    <script>
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document
+                    .getElementById('contactContent')
+                    .classList.add('active');
+            }, 100);
+        });
+    </script>
+
+</body>
+</html>
